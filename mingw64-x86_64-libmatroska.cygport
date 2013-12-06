@@ -1,0 +1,33 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-libmatroska"
+VERSION=1.4.1
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="Matroska audio/video container library for Win64 toolchain"
+DESCRIPTION="Matroska is an extensible open standard Audio/Video container,
+based on EBML (Extensible Binary Meta Language), a binary derivative of XML.
+Matroska is usually found as .mkv files (matroska video) and .mka files
+(matroska audio)."
+HOMEPAGE="http://www.matroska.org/"
+SRC_URI="http://dl.matroska.org/downloads/libmatroska/libmatroska-${VERSION}.tar.bz2"
+SRC_DIR="libmatroska-${VERSION}"
+
+src_compile() {
+	lndirs
+	cd ${B}/make/mingw32
+	cygmake CROSS=${CROSS_HOST}- SHARED=yes
+	rm -f ${B}/src/*.o
+	cygmake CROSS=${CROSS_HOST}- SHARED=no
+}
+
+src_install() {
+	cd ${B}/make/linux
+	cygmake install_headers prefix=${D}${CROSS_PREFIX}
+	cd ${B}/make/mingw32
+	dolib *.a
+	dobin *.dll
+
+	dodoc ${S}/LICENSE.LGPL
+}
