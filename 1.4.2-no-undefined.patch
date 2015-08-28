@@ -1,0 +1,10 @@
+--- origsrc/libmatroska-1.4.2/Makefile.am	2015-01-04 07:31:17.000000000 -0600
++++ src/libmatroska-1.4.2/Makefile.am	2015-08-28 15:30:47.934054100 -0500
+@@ -27,6 +27,7 @@ libmatroska_la_SOURCES = \
+ 	src/KaxTracks.cpp \
+ 	src/KaxVersion.cpp
+ libmatroska_la_LDFLAGS = -version-info 6:0:0 -no-undefined
++libmatroska_la_LIBADD = $(EBML_LIBS)
+ 
+ nobase_include_HEADERS = \
+ 	matroska/c/libmatroska.h \
