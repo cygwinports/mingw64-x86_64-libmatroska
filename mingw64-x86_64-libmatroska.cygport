@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-libmatroska"
-VERSION=1.4.2
+VERSION=1.4.4
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Matroska audio/video container library for Win64 toolchain"
@@ -13,4 +13,3 @@ Matroska is usually found as .mkv files (matroska video) and .mka files
 HOMEPAGE="http://www.matroska.org/"
 SRC_URI="http://dl.matroska.org/downloads/libmatroska/libmatroska-${VERSION}.tar.bz2"
 SRC_DIR="libmatroska-${VERSION}"
-PATCH_URI="1.4.2-no-undefined.patch"
